@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: ansibleforms
+    image: ansibleguy/ansibleforms:latest
     restart: unless-stopped
     ports:
       - $WEBAPP_LOCAL_PORT:$WEBAPP_DOCKER_PORT
