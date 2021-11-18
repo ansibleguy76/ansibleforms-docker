@@ -1,0 +1,29 @@
+.DS_Store
+node_modules
+/dist
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# remote sycn files
+.remote-sync.json
+
+# ontap stuff
+ontap*.yaml
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# no logs
+/logs
+# no db
+/db
