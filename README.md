@@ -26,7 +26,7 @@ cd ansibleforms
 docker-compose up -d
 ```
 # How to stop and kill
-Stopping the
+Stopping the containers will not remove your data.  Your forms.json and database will remain intact.
 ```
 # start docker
 docker-compose down --rmi all
