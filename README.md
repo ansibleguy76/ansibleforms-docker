@@ -12,7 +12,7 @@ cd /srv/apps
 # grab the code from github (yum = assumption of centos)
 yum install -y git
 ‌‌git init
-git clone https://github.com/ansibleguy76/ansibleforms.git
+git clone https://github.com/ansibleguy76/ansibleforms-docker.git
 
 # install docker
 yum install docker-ce docker-ce-cli containerd.io
