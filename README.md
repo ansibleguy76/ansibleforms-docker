@@ -14,10 +14,12 @@ yum install -y git
 ‌‌git init
 git clone https://github.com/ansibleguy76/ansibleforms-docker.git
 
-# install docker
-yum install docker-ce docker-ce-cli containerd.io
+# install docker (yum = assumption of centos)
+yum install -y docker-ce docker-ce-cli containerd.io docker-compose
+systemctl start docker
 
 # enter the app project
+cd ansibleforms-docker
 cd ansibleforms
 
 # start docker

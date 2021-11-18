@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.0'
 
 services:
   mysqldb:
@@ -7,7 +7,7 @@ services:
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_PASSWORD
-      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+      - MYSQL_DATABASE=AnsibleForms
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
