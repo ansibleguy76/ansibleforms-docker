@@ -18,7 +18,7 @@ services:
       # Map database location (to maintain persistency)
       - ./data/mysql/db:/var/lib/mysql
       # Map my.cnf file (to maintain persistency)
-      - ./data/mysql/config:/etc/mysql/conf.d
+      - ./data/mysql/my.cnf:/etc/mysql/conf.d/ansibleformsmy.cnf
   # AnsibleForms application
   app:
     # Only start after MySql
