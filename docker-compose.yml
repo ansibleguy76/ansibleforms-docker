@@ -1,33 +1,48 @@
 version: '3.0'
 
 services:
+  # MySql Server
   mysqldb:
     image: mysql:5.7
     restart: unless-stopped
+    # load extra environment variables from file
     env_file: ./.env
+    # Set manual environment variables
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_PASSWORD
       - MYSQL_DATABASE=AnsibleForms
     ports:
+      # Mount host port to docker internal port
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-      - ./data/db:/var/lib/mysql
+      # Map database location (to maintain persistency)
+      - ./data/mysql/db:/var/lib/mysql
+      # Map my.cnf file (to maintain persistency)
+      - ./data/mysql/my.cnf:/etc/my.cnf
+  # AnsibleForms application
   app:
+    # Only start after MySql
     depends_on:
       - mysqldb
     image: ansibleguy/ansibleforms:latest
     restart: unless-stopped
     ports:
+      # Mount host port to docker internal port
       - $WEBAPP_LOCAL_PORT:$WEBAPP_DOCKER_PORT
+    # Load extra environment variables from file
     env_file:
       - ./.env
+    # Set environment variables
     environment:
       - DB_HOST=mysqldb
       - DB_USER=$MYSQLDB_USER
       - DB_PASSWORD=$MYSQLDB_PASSWORD
       - DB_PORT=$MYSQLDB_DOCKER_PORT
       - PORT=$WEBAPP_DOCKER_PORT
+    # allow interactive shell
     stdin_open: true
+    # allow terminal
     tty: true
     volumes:
+      # Mount application folder to host folder (to maintain persistency)
       - ./data:/app/dist/persistent
