@@ -480,7 +480,7 @@ forms:
     type: ansible
     fields:
       - type: text
-        name: data_folder
+        name: persistent_folder
         label: Path of the data folder
         default: "/app/server/persistent"
         required: true
