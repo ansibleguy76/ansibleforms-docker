@@ -12,7 +12,7 @@ categories:
   - name: Demo
     icon: heart
   - name: Maintenance
-    icon: gears
+    icon: cogs
 roles:
   - name: admin
     groups:
