@@ -10,7 +10,6 @@
     file:
       path: "{{ backupfolder }}"
       owner: root
-      group: mysql
       mode: '0774'
       state: directory
   - name: Back up all databases
