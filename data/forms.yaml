@@ -11,6 +11,8 @@ categories:
     icon: magic
   - name: Demo
     icon: heart
+  - name: Maintenance
+    icon: gears
 roles:
   - name: admin
     groups:
@@ -475,7 +477,7 @@ forms:
       - Demo
       - Ansible
       - Maintenance
-    tileClass: has-background-info
+    tileClass: has-background-info-light
     playbook: ansibleforms_backup.yaml
     type: ansible
     fields:
