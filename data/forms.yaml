@@ -43,7 +43,7 @@ forms:
     categories:
       - Demo
       - Ansible
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     playbook: dummy.yaml
     inventory: ""
     type: ansible
@@ -65,7 +65,7 @@ forms:
     categories:
       - Demo
       - Expressions
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     icon: scroll
     playbook: dummy.yaml
     inventory: ""
@@ -132,7 +132,7 @@ forms:
     description: This workflow will show form field examples
     categories:
       - Demo
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     icon: comment
     playbook: dummy.yaml
     inventory: ""
@@ -233,7 +233,7 @@ forms:
     description: This workflow will show groups and dependencies
     categories:
       - Demo
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     icon: link
     playbook: dummy.yaml
     inventory: ""
@@ -291,7 +291,7 @@ forms:
     categories:
       - Demo
       - Queries
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     playbook: dummy.yaml
     inventory: ""
     type: ansible
@@ -422,7 +422,7 @@ forms:
       - Demo
       - Expressions
       - Queries
-    tileClass: has-background-warning
+    tileClass: has-background-warning-light
     playbook: dummy.yaml
     inventory: ""
     type: ansible
@@ -441,7 +441,7 @@ forms:
         valueColumn: id
         previewColumn: name
   - name: HelloWorld
-    help: >
+    help: |
       This form starts the template `HelloWorld` on AWX.
 
       To make this work, you need an AWX installed with the `HelloWorld` project imported.
@@ -451,10 +451,11 @@ forms:
     description: This will kick off the HelloWorld template in AWX.  You can have it
       installed on AWX from github.  It does not expect any variables, so that's
       cool because it should always run :)
+    icon: smile-wink
     categories:
       - Demo
       - AWX
-    tileClass: has-background-success
+    tileClass: has-background-success-light
     template: HelloWorld
     inventory: ""
     type: awx
@@ -473,6 +474,7 @@ forms:
     roles:
       - admin
     description: This will make a backup of the ansibleforms database and forms.yaml file.
+    icon: save
     categories:
       - Demo
       - Ansible
