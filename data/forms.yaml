@@ -486,7 +486,7 @@ forms:
       - type: text
         name: persistent_folder
         label: Path of the data folder
-        default: "/app/dist/server/persistent"
+        default: "/app/dist/persistent"
         required: true
       - type: text
         name: mysql_host
