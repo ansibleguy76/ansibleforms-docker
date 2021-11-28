@@ -1,5 +1,5 @@
 ---
-- name: backup mysql
+- name: backup ansibleforms
   hosts: localhost
   become: yes
   tasks:

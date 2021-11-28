@@ -463,3 +463,39 @@ forms:
         label: Testfield
         default: ""
         required: true
+  - name: Backup Ansibleforms
+    help: |
+      This form starts the ansibleforms_backup.yaml playbook
+
+      It will make a backup of the `mysql database` as well as `forms.yaml` file
+    roles:
+      - admin
+    description: This will make a backup of the ansibleforms database and forms.yaml file.
+    categories:
+      - Demo
+      - Ansible
+      - Maintenance
+    tileClass: has-background-info
+    playbook: ansibleforms_backup.yaml
+    type: ansible
+    fields:
+      - type: text
+        name: data_folder
+        label: Path of the data folder
+        default: "/app/server/persistent"
+        required: true
+      - type: text
+        name: mysql_host
+        label: Mysql server
+        default: mysqldb
+        required: true
+      - type: text
+        name: mysql_user
+        label: Mysql user
+        default: root
+        required: true
+      - type: password
+        name: mysql_password
+        label: Mysql password
+        default: AnsibleForms!123
+        required: true
