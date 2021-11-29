@@ -482,7 +482,7 @@ forms:
       - type: expression
         name: persistent_folder
         label: Path of the data folder
-        default: "/app/dist/persistent"
+        expression: "/app/dist/persistent"
         required: true
         hide: true
       - type: expression
