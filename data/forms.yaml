@@ -297,11 +297,7 @@ forms:
     type: ansible
     fields:
       - type: query
-        expression: >
-          fn.fnReadYamlFile(
-            '/app/dist/persistent/forms.yaml',
-            '[.forms[].name]'
-          )
+        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[].name]')
         name: forms0
         multiple: false
         default: __none__
@@ -483,23 +479,15 @@ forms:
     playbook: ansibleforms_backup.yaml
     type: ansible
     fields:
-      - type: text
+      - type: expression
         name: persistent_folder
         label: Path of the data folder
         default: "/app/dist/persistent"
         required: true
-      - type: text
-        name: mysql_host
-        label: Mysql server
-        default: mysqldb
-        required: true
-      - type: text
-        name: mysql_user
-        label: Mysql user
-        default: root
-        required: true
-      - type: password
-        name: mysql_password
-        label: Mysql password
-        default: AnsibleForms!123
-        required: true
+        hide: true
+      - type: expression
+        name: mysql_credential
+        expression: "'__self__'"
+        label: Credential to connect to database
+        asCredential: true
+        hide: true

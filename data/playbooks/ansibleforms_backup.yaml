@@ -18,9 +18,10 @@
       state: dump
       name: AnsibleForms
       target: '{{ backupfolder }}/ansibleforms.sql'
-      login_host: "{{ mysql_host}}"
-      login_user: "{{ mysql_user }}"
-      login_password: "{{ mysql_password }}"
+      login_host: "{{ mysql_credential.host}}"
+      login_port: "{{ mysql_credential.port}}"
+      login_user: "{{ mysql_credential.user }}"
+      login_password: "{{ mysql_credential.password }}"
   - name: Backup forms.yaml
     copy:
       src: "{{ persistent_folder }}/forms.yaml"
