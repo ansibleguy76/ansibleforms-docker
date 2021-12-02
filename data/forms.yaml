@@ -186,8 +186,8 @@ forms:
           regex: '[a-zA-Z]*'
           regexDescription: Must be normal characters
           icon: user
-        - name: Last Name
-          label: Subnet mask
+        - name: lastname
+          label: Last Name
           type: text
           required: true
           default: ''
@@ -199,6 +199,16 @@ forms:
           default: 12
           minValue: 12
           maxValue: 80
+        - type: enum
+          name: food
+          label: Favorite food
+          default: veggies
+          values:
+            - pasta
+            - pizza
+            - fries
+            - steak
+            - veggies
         - name: paid
           label: Has paid membership ?
           type: checkbox
