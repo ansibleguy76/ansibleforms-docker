@@ -210,7 +210,8 @@ forms:
             - steak
             - veggies
         - name: paid
-          label: Has paid membership ?
+          label: membership
+          placeholder: Paid yet ?
           type: checkbox
           required: true
           default: true
