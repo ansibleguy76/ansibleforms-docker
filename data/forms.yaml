@@ -172,6 +172,38 @@ forms:
         required: true
         minValue: 0
         maxValue: 10
+      - type: table
+        name: member
+        label: Add club members
+        required: true
+        tableFields:
+        - name: firstname
+          label: First Name
+          type: text
+          required: true
+          default: ''
+          minLength: 2
+          regex: '[a-zA-Z]*'
+          regexDescription: Must be normal characters
+          icon: user
+        - name: Last Name
+          label: Subnet mask
+          type: text
+          required: true
+          default: ''
+          minLength: 5
+        - name: age
+          label: How old ?
+          type: number
+          required: true
+          default: 12
+          minValue: 12
+          maxValue: 80
+        - name: paid
+          label: Has paid membership ?
+          type: checkbox
+          required: true
+          default: true
       - type: enum
         name: country
         model: country.name
