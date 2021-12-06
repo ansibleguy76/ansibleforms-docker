@@ -507,7 +507,7 @@ forms:
         required: true
   - name: Backup Ansibleforms
     help: |
-      This form starts the ansibleforms_backup.yaml playbook
+      This form starts the `ansibleforms_backup.yaml` playbook
 
       It will make a backup of the `mysql database` as well as `forms.yaml` file
     roles:
@@ -528,6 +528,30 @@ forms:
         expression: "'/app/dist/persistent'"
         required: true
         hide: true
+      - type: expression
+        name: mysql_credential
+        expression: "'__self__'"
+        label: Credential to connect to database
+        asCredential: true
+        required: true
+        hide: true
+  - name: Cleanup Ansibleforms Jobs
+    help: |
+      This form starts the `ansibleforms_job_cleanup.yaml` playbook
+
+      It will remove all ansible job logs
+    roles:
+      - admin
+    description: This will cleanup all ansible job logs.
+    icon: trash
+    categories:
+      - Demo
+      - Ansible
+      - Maintenance
+    tileClass: has-background-danger-light
+    playbook: ansibleforms_job_cleanup.yaml
+    type: ansible
+    fields:
       - type: expression
         name: mysql_credential
         expression: "'__self__'"
