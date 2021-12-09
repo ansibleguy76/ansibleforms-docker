@@ -322,11 +322,7 @@ forms:
        | map function  | a javascript map function                |          | yes      | [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  |
 
       ```
-         expression: >
-           fn.fnReadYamlFile(
-             '/app/dist/persistent/forms.yaml',
-             '[.forms[].name]'
-           )
+         expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[].name]')
       ```
     roles:
       - public
