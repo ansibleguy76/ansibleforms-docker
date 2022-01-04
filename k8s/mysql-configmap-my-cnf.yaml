@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-my-cnf
+  namespace: ansibleforms
+  labels:
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: ansibleforms
+data:
+  my.cnf: |
+    [mysqld]

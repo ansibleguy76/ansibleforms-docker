@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: ansibleforms
+  name: ansibleforms-server-pv-claim
+  labels:
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: server
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: ansibleforms
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
