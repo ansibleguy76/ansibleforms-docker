@@ -28,6 +28,7 @@ roles:
     groups: []
 forms:
   - name: Demo Form Ansible No input
+    showHelp: true
     help: |
       This demo is to show the execution of an ansible playbook.
       The playbook `dummy.yaml` in this case.
@@ -49,6 +50,7 @@ forms:
     type: ansible
     fields: []
   - name: Demo Form Functionality Expressions
+    showHelp: true
     help: |
       This demo shows the power of expression fields.  Expression fields have a **javascript** expression that is evaluated.
       The expression allows the use of **placeholders** in the form of `$(field)`.
@@ -111,6 +113,7 @@ forms:
         label: The number PI
         expression: Math.PI
   - name: Demo Form Functionality Simple Fields
+    showHelp: true
     help: |
       This demo shows the use of simple form fields, like `text`, `number`, `password`,`enum`,`radio` and `checkbox`.
       Note that we can use regular expressions to validate, as well as default validations (depending on the fieldtype) such as `required`, `minValue`, `maxValue`, `minLength` and `maxLength`<br>
@@ -147,7 +150,7 @@ forms:
         required: true
         minLength: 4
         maxLength: 10
-        regex: 
+        regex:
           expression: ^[a-zA-Z]*$
           description: Must be alpha numeric
         icon: user
@@ -262,6 +265,7 @@ forms:
         default: false
         placeholder: are you sure?
   - name: Groups and dependencies
+    showHelp: true
     help: |
       This demo shows how you can create dependencies between fields (**try the checkbox**) and how you can group fields together visually.
       ```
@@ -309,6 +313,7 @@ forms:
               - true
         group: Let's do it
   - name: Query options
+    showHelp: true
     help: |
       This demo shows the possibilities of the query field (**dropdown box**).
       In this case we use a javascript expression to acquire data.
@@ -428,6 +433,7 @@ forms:
           - name
           - type
   - name: Expression Queries
+    showHelp: true
     help: >
       This demo grabs information, using rest, directly from the internet.
       [https://gorest.co.in/public/v1/users](https://gorest.co.in/public/v1/users).
@@ -480,6 +486,7 @@ forms:
         valueColumn: id
         previewColumn: name
   - name: HelloWorld
+    showHelp: true
     help: |
       This form starts the template `HelloWorld` on AWX.
 
@@ -506,6 +513,7 @@ forms:
         default: ""
         required: true
   - name: Backup Ansibleforms
+    showHelp: true
     help: |
       This form starts the `ansibleforms_backup.yaml` playbook
 
@@ -536,6 +544,7 @@ forms:
         required: true
         hide: true
   - name: Cleanup Ansibleforms Jobs
+    showHelp: true
     help: |
       This form starts the `ansibleforms_job_cleanup.yaml` playbook
 
