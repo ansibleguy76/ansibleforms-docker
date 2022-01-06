@@ -567,3 +567,19 @@ forms:
         asCredential: true
         required: true
         hide: true
+      - type: checkbox
+        name: areyousure
+        label: Confirmation
+        default: false
+        placeholder: Are you sure you want to cleanup
+      - type: text
+        name: confirmation
+        label: Please type YES to confirm you want to cleanup
+        placeholder: YES
+        required: true
+        regex: ^YES$
+        regexDescription: Type YES to confirm
+        dependencies:
+          - name: areyousure
+            values:
+              - true
