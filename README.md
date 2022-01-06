@@ -39,7 +39,6 @@ docker-compose up -d
 ```
 ## Test the application
 - Surf to : https://your_ip:8443
-- Create the database and tables : The first time you will be prompted to create the database and tables.
 - Login with admin / AnsibleForms!123
 - Next steps :
   - Start creating your forms by changing the forms.yaml file (https://github.com/ansibleguy76/ansibleforms/wiki)
