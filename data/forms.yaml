@@ -189,9 +189,8 @@ forms:
           required: true
           default: ''
           minLength: 2
-          regex:
-            expression: '[a-zA-Z]*'
-            description: Must be normal characters
+          regex: '[a-zA-Z]*'
+          regexDescription: Must be normal characters
           icon: user
         - name: lastname
           label: Last Name
