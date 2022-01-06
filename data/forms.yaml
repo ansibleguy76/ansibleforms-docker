@@ -189,8 +189,9 @@ forms:
           required: true
           default: ''
           minLength: 2
-          regex: '[a-zA-Z]*'
-          regexDescription: Must be normal characters
+          regex:
+            expression: ^[a-zA-Z]*$
+            description: Must be normal characters
           icon: user
         - name: lastname
           label: Last Name
@@ -577,8 +578,9 @@ forms:
         label: Please type YES to confirm you want to cleanup
         placeholder: YES
         required: true
-        regex: ^YES$
-        regexDescription: Type YES to confirm
+        regex:
+          expression: ^YES$
+          description: Type YES to confirm
         dependencies:
           - name: areyousure
             values:
