@@ -11,3 +11,4 @@ data:
   LOG_CONSOLE_LEVEL: debug
   LOG_LEVEL: debug
   MYSQL_DATABASE: "AnsibleForms"
+  NODE_ENV: "production"
