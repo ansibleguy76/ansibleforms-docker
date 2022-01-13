@@ -21,6 +21,7 @@ services:
       - ./data/mysql/my.cnf:/etc/mysql/my.cnf
       # Map init sql scripts
       - ./data/mysql/init:/docker-entrypoint-initdb.d
+
   # AnsibleForms application
   app:
     # Only start after MySql
@@ -48,3 +49,5 @@ services:
     volumes:
       # Mount application folder to host folder (to maintain persistency)
       - ./data:/app/dist/persistent
+      # Map init sql scripts
+      - ./data/functions:/app/dist/src/functions
