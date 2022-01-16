@@ -49,5 +49,6 @@ services:
     volumes:
       # Mount application folder to host folder (to maintain persistency)
       - ./data:/app/dist/persistent
-      # Map init sql scripts
-      - ./data/functions:/app/dist/src/functions
+      # Map custom functions for fq and expressions
+      - ./data/functions/custom.js:/app/dist/src/functions/custom.js
+      - ./data/functions/js.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
