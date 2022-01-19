@@ -21,7 +21,11 @@ services:
       - ./data/mysql/my.cnf:/etc/mysql/my.cnf
       # Map init sql scripts
       - ./data/mysql/init:/docker-entrypoint-initdb.d
-
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
   # AnsibleForms application
   app:
     # Only start after MySql
@@ -52,3 +56,8 @@ services:
       # Map custom functions for fq and expressions
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
       - ./data/functions/js.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
