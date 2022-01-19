@@ -26,6 +26,9 @@ services:
         limits:
           cpus: '0.5'
           memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M                   
   # AnsibleForms application
   app:
     # Only start after MySql
@@ -61,3 +64,6 @@ services:
         limits:
           cpus: '0.5'
           memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
