@@ -93,7 +93,8 @@ forms:
         name: concatination
         default: ""
         label: Concatination Example
-        expression: "'$(textfield1)' + ' ' + '$(textfield2)' + $(multiply)"
+        expression: "'$(textfield1) $(textfield2) : $(numberfield) x 100 = $(multiply)'"
+        runLocal: true
       - type: number
         name: numberfield
         label: Number
@@ -107,12 +108,14 @@ forms:
         default: ""
         label: Multiply Example
         expression: $(numberfield)*100
+        runLocal: true
       - type: expression
         hide: false
         name: pi
         default: ""
         label: The number PI
         expression: Math.PI
+        runLocal: true
   - name: Demo Form Functionality Simple Fields
     showHelp: true
     help: |
@@ -313,154 +316,11 @@ forms:
             values:
               - true
         group: Let's do it
-  - name: Query options
-    showHelp: true
-    help: |
-      This demo shows the possibilities of the query field (**dropdown box**).
-      In this case we use a javascript expression to acquire data.
-
-      As a matter of fact, we read our very own `forms.yaml` file.
-      To accomplish this, we use our javascript function `fn.fnReadYamlFile()`
-      We also have a `fn.fnReadJsonFile()`
-
-      ### The 4 parameters of fn.fnReadYamlFile() are :
-       | attribute     | description                              | required | optional | more info                                                                                                     |
-       |---------------|------------------------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------|
-       | path          | /path/of/file.yaml                       | yes      |          |                                                                                                               |
-       | json query    | a json query to transform the result     |          | yes      | [https://www.jsonquerytool.com/](https://www.jsonquerytool.com/)                                                                              |
-       | sort function | a javascript sort function               |          | yes      | [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) |
-       | map function  | a javascript map function                |          | yes      | [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  |
-
-      ```
-         expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[].name]')
-      ```
-    roles:
-      - public
-    description: This shows all the query options and combinations.
-    categories:
-      - Demo
-      - Queries
-    tileClass: has-background-warning-light
-    playbook: dummy.yaml
-    inventory: ""
-    type: ansible
-    fields:
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[].name]')
-        name: forms0
-        multiple: false
-        default: __none__
-        label: Simple one column select
-        icon: building
-        placeholder: Select a form
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms1
-        multiple: false
-        default: __none__
-        label: Multiple columns
-        icon: building
-        columns:
-          - name
-          - type
-        valueColumn: name
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms2
-        multiple: false
-        label: Autoselect first item
-        default: __auto__
-        icon: building
-        columns:
-          - name
-          - type
-        valueColumn: name
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms3
-        multiple: false
-        label: Required field
-        default: __none__
-        required: true
-        icon: building
-        columns:
-          - name
-          - type
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms4
-        multiple: false
-        outputObject: true
-        label: Object output
-        default: __none__
-        required: false
-        icon: building
-        columns:
-          - name
-          - type
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms5
-        multiple: true
-        label: Select multiple, flattened output
-        default: __none__
-        required: false
-        icon: building
-        columns:
-          - name
-          - type
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms6
-        multiple: true
-        outputObject: true
-        label: Select multiple, object output
-        default: __none__
-        required: false
-        icon: building
-        columns:
-          - name
-          - type
-      - type: query
-        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
-        name: forms7
-        multiple: true
-        outputObject: true
-        label: Specific default
-        default: HelloWorld
-        required: false
-        icon: building
-        columns:
-          - name
-          - type
   - name: Expression Queries
     showHelp: true
     help: >
-      This demo grabs information, using rest, directly from the internet.
-      [https://gorest.co.in/public/v1/users](https://gorest.co.in/public/v1/users).
-
-      To accomplish this, we use our javascript function `fn.fnRestBasic()`
-
-      ### The 6 parameters of fn.fnRestBasic() are :
-       | attribute     | description                              | required | optional | more info                                                                                                     |
-       |---------------|------------------------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------|
-       | method        | get \| put \| post \| delete             | yes      |          |                                                                                                               |
-       | url           | https://rest/api/v1/...                  | yes      |          |                                                                                                               |
-       | body          | json-body with post and put              |          | yes      |                                                                                                               |
-       | credential    | named credential (added to ansibleforms) |          | yes      |                                                                                                               |
-       | json query    | a json query to transform the result     |          | yes      | [https://www.jsonquerytool.com/](https://www.jsonquerytool.com/)                                                                              |
-       | sort function | a javascript sort function               |          | yes      | [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) |
-       | map function  | a javascript map function                |          | yes      | [Read more here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  |
-
-       ```
-        - type: query
-          name: user
-          label: Users
-          expression: fn.fnRestBasic('get','https://gorest.co.in/public/v1/users','','','[.data[]]')
-          columns:
-            - name
-            - email
-       ```
+      This demo grabs information, using various builtin functions.
+      [Read more here](https://github.com/ansibleguy76/ansibleforms/wiki/3.-FAQ#advanced-functions)
     roles:
       - public
     description: An example of the power of expression based queries
@@ -475,14 +335,27 @@ forms:
     fields:
       - type: query
         name: user
-        label: Users
+        label: Data with Rest (live from internet)
         default: __auto__
         required: true
         outputObject: true
         multiple: false
+        icon: user
         expression: fn.fnRestBasic('get','https://gorest.co.in/public/v1/users','','','[.data[]]')
         columns:
           - name
           - email
         valueColumn: id
         previewColumn: name
+      - type: query
+        expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
+        name: forms
+        multiple: true
+        outputObject: false
+        label: Data from Yaml (reading our own forms.yaml)
+        default: __auto__
+        required: false
+        icon: building
+        columns:
+          - name
+          - type
