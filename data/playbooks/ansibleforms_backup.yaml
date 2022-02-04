@@ -25,4 +25,13 @@
   - name: Backup forms.yaml
     copy:
       src: "{{ persistent_folder }}/forms.yaml"
-      dest: "{{ backupfolder }}/forms.yaml"
+      dest: "{{ backupfolder }}"
+  - name: Check if forms subdir exists
+    stat:
+      path: "{{ persistent_folder }}/forms"
+    register: formsdir
+  - name: Copy forms subdir
+    copy:
+      src: "{{ persistent_folder }}/forms"
+      dest: "{{ backupfolder }}"
+    when: formsdir.stat.exists
