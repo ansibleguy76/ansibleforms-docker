@@ -39,7 +39,13 @@ spec:
                 configMapKeyRef:
                   key: MYSQL_DATABASE
                   name: ansibleforms-env
-          resources: {}
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 512Mi
+            requests:
+              cpu: "0.25"
+              memory: 256Mi
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mysql-persistent-storage
