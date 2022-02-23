@@ -10,6 +10,8 @@ CREATE TABLE `jobs` (
   `end` datetime DEFAULT NULL,
   `user` varchar(250) DEFAULT NULL,
   `user_type` varchar(10) DEFAULT NULL,
+  `job_type` varchar(20) DEFAULT NULL,
+  `extravars` mediumtext DEFAULT NULL,  
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 CREATE TABLE `job_output` (
