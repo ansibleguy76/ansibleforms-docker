@@ -60,7 +60,8 @@ services:
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
       - ./data/functions/js.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
       # Map custom sshkey to local node .ssh location
-      - ./data/sshkeys:/root/.ssh
+      - ./data/ssh:$HOME_DIR/.ssh
+      - ./data/git/.gitconfig:$HOME_DIR/.gitconfig
     deploy:
       resources:
         limits:
