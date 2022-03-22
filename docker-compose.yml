@@ -49,7 +49,6 @@ services:
       - DB_PASSWORD=$MYSQLDB_PASSWORD
       - DB_PORT=$MYSQLDB_DOCKER_PORT
       - PORT=$WEBAPP_DOCKER_PORT
-      - URL=$ANSIBLEFORMS_URL
     # allow interactive shell
     stdin_open: true
     # allow terminal
