@@ -56,7 +56,7 @@ services:
     volumes:
       # Mount application folder to host folder (to maintain persistency)
       - ./data:/app/dist/persistent
-      # Map custom functions for fq and expressions
+      # Map custom functions for js expressions and jq
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
       - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
       # Map custom sshkey to local node .ssh location
