@@ -9,7 +9,7 @@ CREATE TABLE `credentials` (
   `port` int(11) DEFAULT NULL,
   `description` text NOT NULL,
   `secure` tinyint(4) DEFAULT NULL,
-  `db_type` varchar(250) DEFAULT NULL,  
+  `db_type` varchar(10) DEFAULT NULL,  
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_AnsibleForms_credentials_natural_key` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
