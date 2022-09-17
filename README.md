@@ -67,3 +67,8 @@ You will find the following structure there:
 - **forms.yaml** : The file that describes your forms.
 # Still a bit confused and in need for help ?
 Reach out to me at info@ansibleguy.com
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
