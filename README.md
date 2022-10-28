@@ -21,6 +21,12 @@ git clone https://github.com/ansibleguy76/ansibleforms-docker.git
 ```
 cd ansibleforms-docker
 ```
+## Set permissions
+```
+# you might need to set permissions on the data folder, this will host your persistent data.  
+# write access will be needed
+# the mysql init folder needs execution rights to rollout the database
+```
 ## Install docker-cd
 **Note** : In case you use centos7, you must add the repository for docker first.
 ```
@@ -31,7 +37,11 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 ## Install and start docker
 ```
 yum install -y docker-ce docker-ce-cli containerd.io docker-compose
+# the below is to ensure dns works properly inside the dockerimages
+mkdir -p /etc/docker
+echo "{\"dns-opts\":[\"ndots:15\"]}" > /etc/docker/daemon.json
 systemctl start docker
+systemctl enable docker
 ```
 ## Start the containers with docker compose
 ```
