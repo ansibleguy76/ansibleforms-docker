@@ -333,7 +333,7 @@ forms:
     inventory: ""
     type: ansible
     fields:
-      - type: query
+      - type: enum
         name: user
         label: Data with Rest (live from internet)
         default: __auto__
@@ -347,7 +347,7 @@ forms:
           - email
         valueColumn: id
         previewColumn: name
-      - type: query
+      - type: enum
         expression: fn.fnReadYamlFile('/app/dist/persistent/forms.yaml','[.forms[]]')
         name: forms
         multiple: true

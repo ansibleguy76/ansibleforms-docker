@@ -23,7 +23,13 @@ ontap*.yaml
 *.sln
 *.sw?
 
+# workspace
+*.code-workspace
+
 # no logs
 /logs
 # no db
 /db
+
+# git
+.gitignore
