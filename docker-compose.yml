@@ -59,7 +59,7 @@ services:
       # Mount images folder to host folder (to have custom images)
       - ./data/images:/app/dist/views/assets/images    
       # Mount logo (to have custom logo)
-      #- ./data/images/logo.svg:/app/dist/views/assets/img/logo_ansible_forms_full_white.svg
+      #- ./data/images/mylogo.svg:/app/dist/views/assets/img/logo_ansible_forms_full_white.svg
       # Map custom functions for js expressions and jq
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
       - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
