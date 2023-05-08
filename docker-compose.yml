@@ -60,6 +60,8 @@ services:
       - ./data/images:/app/dist/views/assets/images    
       # Mount logo (to have custom logo)
       #- ./data/images/mylogo.svg:/app/dist/views/assets/img/logo_ansible_forms_full_white.svg
+      # Mount background image
+      #- ./data/bg.jpg:/app/dist/views/assets/img/bg.jpg
       # Map custom functions for js expressions and jq
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
       - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
