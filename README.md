@@ -23,9 +23,10 @@ cd ansibleforms-docker
 ```
 ## Set permissions
 ```
-# you might need to set permissions on the data folder, this will host your persistent data.  
-# write access will be needed
-# the mysql init folder needs execution rights to rollout the database
+# write access will be needed on the datafolder
+chmod -R 664 ./data
+# the mysql init folder needs execute rights 
+chmod -R +x ./data/mysql/init/
 ```
 ## Install docker-cd
 **Note** : In case you use centos7, you must add the repository for docker first.
