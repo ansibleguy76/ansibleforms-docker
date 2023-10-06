@@ -1,0 +1,10 @@
+---
+- name: Ansible-Galaxy Install
+  hosts: localhost
+  tasks:
+    - name: Install collection/role 
+      community.general.ansible_galaxy_install:
+        type: "{{ type }}"
+        name: "{{ name }}"
+        force: "{{ force }}"
+        dest: "{{ destination }}"
