@@ -79,7 +79,7 @@
       It allows to install a python package within the persistent folder, so it becomes boot resistent.
     description: Install a python package in the persistent folder.
     type: ansible
-    playbook: pip_install.yml
+    playbook: ansibleforms_pip_install.yml
     roles:
       - admin
     categories:
