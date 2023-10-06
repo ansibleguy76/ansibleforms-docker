@@ -49,6 +49,8 @@ services:
       - DB_PASSWORD=$MYSQLDB_PASSWORD
       - DB_PORT=$MYSQLDB_DOCKER_PORT
       - PORT=$WEBAPP_DOCKER_PORT
+      # adding python path to add our custom persistent lib location
+      - PYTHONPATH=/usr/lib/python311.zip:/usr/lib/python3.11:/usr/lib/python3.11/lib-dynload:/usr/lib/python3.11/site-packages:/app/dist/persistent/python/lib      
     # allow interactive shell
     stdin_open: true
     # allow terminal

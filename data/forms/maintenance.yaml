@@ -71,3 +71,22 @@
           - name: areyousure
             values:
               - true
+  - name: Pip Install Package
+    showHelp: true
+    help: |
+      This form starts the `ansibleforms_pip_install.yaml` playbook  
+        
+      It allows to install a python package within the persistent folder, so it becomes boot resistent.
+    description: Install a python package in the persistent folder.
+    type: ansible
+    playbook: pip_install.yml
+    roles:
+      - admin
+    categories:
+      - Maintenance
+    tileClass: has-background-info-light
+    icon: spider
+    fields:
+      - name: library_name
+        label: Enter the Name of the package
+        type: text

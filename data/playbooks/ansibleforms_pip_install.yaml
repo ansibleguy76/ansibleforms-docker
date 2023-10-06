@@ -1,0 +1,11 @@
+---
+- name: Donwload and Install custom Python Library
+  hosts: localhost
+  tasks:
+    - name: Install python package
+      ansible.builtin.pip:
+        name: "{{ library_name }}"
+        extra_args: "--trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip --target /app/dist/persistent/python/lib"
+      # environment:
+      #   http_proxy: 'http://prxp01:8080'
+      #   https_proxy: 'http://prxp01:8080'
