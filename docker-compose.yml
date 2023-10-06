@@ -21,14 +21,6 @@ services:
       - ./data/mysql/my.cnf:/etc/mysql/my.cnf
       # Map init sql scripts
       - ./data/mysql/init:/docker-entrypoint-initdb.d
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
   # AnsibleForms application
   app:
     # Only start after MySql
@@ -62,7 +54,7 @@ services:
       - ./data/images:/app/dist/views/assets/images    
       # Mount logo (to have custom logo)
       #- ./data/images/mylogo.svg:/app/dist/views/assets/img/logo_ansible_forms_full_white.svg
-      # Mount background image
+      # Mount background image (to have custom background)
       #- ./data/bg.jpg:/app/dist/views/assets/img/bg.jpg
       # Map custom functions for js expressions and jq
       - ./data/functions/custom.js:/app/dist/src/functions/custom.js
@@ -70,11 +62,8 @@ services:
       # Map custom sshkey to local node .ssh location
       - ./data/ssh:$HOME_DIR/.ssh
       - ./data/git/.gitconfig:$HOME_DIR/.gitconfig
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
+      # Map custom ansible.cfg
+      - ./data/ansible/ansible.cfg:/etc/ansible/ansible.cfg
+      - ./data/ansible/roles:/etc/ansible/roles
+      - ./data/ansible/collections:/etc/ansible/collections
+
