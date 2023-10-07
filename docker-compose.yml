@@ -3,7 +3,7 @@ version: '3.0'
 services:
   # MySql Server
   mysqldb:
-    image: mysql:5.7
+    image: mysql:8.1
     restart: unless-stopped
     # load extra environment variables from file
     env_file: ./.env
