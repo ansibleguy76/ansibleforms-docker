@@ -4,6 +4,7 @@ services:
   # MySql Server
   mysqldb:
     image: mysql:8.1
+    container_name: af_db
     restart: unless-stopped
     # load extra environment variables from file
     env_file: ./.env
@@ -27,6 +28,7 @@ services:
     depends_on:
       - mysqldb
     image: ansibleguy/ansibleforms:latest
+    container_name: af_app
     restart: unless-stopped
     ports:
       # Mount host port to docker internal port
