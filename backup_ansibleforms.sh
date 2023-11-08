@@ -18,10 +18,6 @@
                 AUTH_URL="$BASE_URL/auth/login"
                 BACKUP_URL="$BASE_URL/job"
 
-                # Final API Endpoint
-                API_URL="https://api.example.com/resource"
-
-
                 # Step 1: Obtain the authentication token
                 auth_response=$(curl -s -k -X POST \
                                    -u "$USERNAME:$PASSWORD" \
