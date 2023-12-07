@@ -11,5 +11,11 @@ CREATE TABLE `ldap` (
   `bind_user_pw` text DEFAULT NULL,
   `search_base` varchar(250) DEFAULT NULL,
   `username_attribute` varchar(250) DEFAULT NULL,
-  `enable` tinyint(4) DEFAULT NULL
+  `groups_attribute` varchar(250) DEFAULT NULL,
+  `enable` tinyint(4) DEFAULT NULL,
+  `is_advanced` tinyint(4) DEFAULT NULL,
+  `groups_search_base` varchar(250) DEFAULT NULL,
+  `group_class` varchar(250) DEFAULT NULL,
+  `group_member_attribute` varchar(250) DEFAULT NULL,
+  `group_member_user_attribute` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
