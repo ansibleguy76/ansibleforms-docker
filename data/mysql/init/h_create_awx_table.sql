@@ -6,5 +6,6 @@ CREATE TABLE `awx` (
   `token` text NOT NULL,
   `password` text NOT NULL,
   `ignore_certs` tinyint(4) DEFAULT NULL,
-  `ca_bundle` text DEFAULT NULL  
+  `use_credentials` tinyint(4) DEFAULT NULL,  
+  `ca_bundle` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
