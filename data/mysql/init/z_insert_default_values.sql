@@ -1,4 +1,6 @@
 USE `AnsibleForms`;
+INSERT INTO AnsibleForms.azuread(client_id,secret_id,enable,groupfilter) VALUES('','',0,'');
+INSERT INTO AnsibleForms.oidc(issuer, client_id,secret_id,enabled,groupfilter) VALUES('', '','',0,'');
 INSERT INTO AnsibleForms.groups(name) VALUES('admins');
 INSERT INTO AnsibleForms.awx(uri,token,username,password,ignore_certs,use_credentials,ca_bundle) VALUES('','','','',0,0,'');
 INSERT INTO AnsibleForms.users(username,password,email,group_id) VALUES('admin','$2b$10$Z/W0HXNBk2aLR4yVLkq5L..C8tXg.G.o1vkFr8D2lw8JSgWRCNiCa','',1);
