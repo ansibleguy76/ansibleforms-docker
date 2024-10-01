@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: {{ .Release.Name }}-server
+  labels:
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: server
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: ansibleforms
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.Version | quote }}
+spec:
+  type: {{ .Values.server.service.type }}
+  ports:
+    - name: server
+      port: {{ .Values.server.service.port }}
+      targetPort: 8000
+  selector:
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: server

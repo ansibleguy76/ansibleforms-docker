@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-server"
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: server
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: ansibleforms
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/version: {{ .Chart.Version | quote }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: server
+  replicas: {{ .Values.server.replicas | default 1 }}
+  strategy:
+    type: {{ .Values.server.strategyType | default "Recreate" }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: server
+        app.kubernetes.io/instance: server
+        app.kubernetes.io/component: server
+        app.kubernetes.io/part-of: ansibleforms
+        app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+        app.kubernetes.io/version: {{ .Chart.Version | quote }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.server.image.pullSecret }}
+      containers:
+        - image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag }}"
+          name: server
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-db-secret
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-db-secret
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-db-secret
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-db-secret
+                  key: DB_PASSWORD
+            - name: PYTHONPATH
+              value: /usr/lib/python311.zip:/usr/lib/python3.11:/usr/lib/python3.11/lib-dynload:/usr/lib/python3.11/site-packages:/app/dist/persistent/python/lib
+            {{- with .Values.server.extraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- if .Values.server.resources }}
+          resources:
+            limits:
+              cpu: {{ .Values.server.resources.limits.cpu | default "0.5" }}
+              memory: {{ .Values.server.resources.limits.memory | default "512Mi" }}
+            requests:
+              cpu: {{ .Values.server.resources.requests.cpu | default "0.25" }}
+              memory: {{ .Values.server.resources.requests.memory | default "256Mi" }}
+          {{ end }}
+          stdin: {{ .Values.server.stdin | default true }}
+          tty: {{ .Values.server.tty | default true }}
+          volumeMounts:
+            - mountPath: /app/dist/persistent
+              name: {{ .Release.Name }}-data
+            - mountPath: /.ssh
+              name: {{ .Release.Name }}-ssh
+      restartPolicy: Always
+      volumes:
+        {{ if .Values.server.persistence.enabled }}
+        - name: {{ .Release.Name }}-server-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-data
+        {{ else }}
+        - name: {{ .Release.Name }}-data
+          emptyDir: {}
+        {{ end }}
+        - name: {{ .Release.Name }}-ssh
+          emptyDir: {}
