@@ -1,0 +1,10 @@
+apiVersion: v2
+name: ansibleforms
+description: A Helm chart to deploy AnsibleForms on Kubernetes.
+type: application
+version: 0.1.0
+appVersion: 5.0.7
+dependencies:
+  - name: mysql
+    version: 11.1.17
+    repository: https://charts.bitnami.com/bitnami
