@@ -15,3 +15,12 @@ Simply follow the instructions on (https://ansibleforms.com)
 * a backup bash script
 * sample custom functions to extend Ansible Forms.
 
+# How to use helm chart ?
+
+Example to deploy in a `ansibleforms-dev` namespace :
+
+`helm install --namespace ansibleforms-dev ansibleform .`
+
+To deploy new configs :
+
+`helm upgrade --namespace ansibleforms-dev ansibleform .`
