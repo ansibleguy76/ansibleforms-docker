@@ -3,7 +3,7 @@ server:
   image:
     repository:  "ansibleforms/server"
     pullPolicy: IfNotPresent
-    tag: "5.0.6"
+    tag: "5.0.7"
   env: {}
     # logConsoleLevel: "info"
     # logLevel: "info"
@@ -45,7 +45,31 @@ server:
   
   affinity: {}
 
+mysql:
+  enabled: true
+  auth:
+    rootPassword: "AnsibleForms!123"
+    database: "AnsibleForms"
+
 dbHost: "mysql"
 dbPort: "3306"
 dbUser: "root"
 dbPassword: "AnsibleForms!123"
+
+# Configure Ansible Forms
+# See https://ansibleforms.com/forms/ for more information
+formsYaml:
+  categories:
+    - name: Default
+      icon: bars
+  roles:
+    - name: admin
+      groups:
+        - local/admins
+    - name: operator
+      groups:
+        - local/operator
+    - name: public
+      groups: []
+  constants: {}
+  forms: []

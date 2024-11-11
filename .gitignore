@@ -33,3 +33,7 @@ ontap*.yaml
 
 # git
 .gitignore
+
+# helm
+helm/charts
+values-test.yaml

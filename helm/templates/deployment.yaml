@@ -26,6 +26,8 @@ spec:
         app.kubernetes.io/part-of: ansibleforms
         app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
         app.kubernetes.io/version: {{ .Chart.Version | quote }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/form-yaml-configmap.yaml") . | sha256sum }}
     spec:
       imagePullSecrets:
         - name: {{ .Values.server.image.pullSecret }}
@@ -76,6 +78,9 @@ spec:
               name: {{ .Release.Name }}-data
             - mountPath: /.ssh
               name: {{ .Release.Name }}-ssh
+            - name: {{ .Release.Name }}-forms-yaml
+              mountPath: /app/dist/persistent/forms.yaml
+              subPath: config
       restartPolicy: Always
       volumes:
         {{ if .Values.server.persistence.enabled }}
@@ -88,3 +93,7 @@ spec:
         {{ end }}
         - name: {{ .Release.Name }}-ssh
           emptyDir: {}
+        - name: {{ .Release.Name }}-forms-yaml
+          configMap:
+            name: {{ .Release.Name }}-forms-yaml
+            defaultMode: 420
