@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `repositories`;
 CREATE TABLE `repositories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
+  `branch` varchar(250) DEFAULT NULL,
   `user` varchar(250) DEFAULT NULL,
   `password` text DEFAULT NULL,
   `uri` varchar(250) DEFAULT NULL,
