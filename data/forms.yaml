@@ -18,9 +18,17 @@ roles:
     groups:
       - local/admins
       - ldap/Domain Admins
-  - name: operator
+  - name: designers
     groups:
-      - local/operator
+      - local/designers
+    options:
+      showDesigner: true
+      showLogs: true
+      showDebugButtons: true
+  - name: operators
+    groups:
+      - local/operators
+      - local/designers
   - name: demo
     groups:
       - local/demo
