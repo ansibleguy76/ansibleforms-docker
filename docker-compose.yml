@@ -3,7 +3,7 @@ version: '3.0'
 services:
   # MySql Server
   mysqldb:
-    image: mysql:8.1
+    image: mysql:8.4.5
     container_name: af_db
     restart: unless-stopped
     # load extra environment variables from file
@@ -59,8 +59,8 @@ services:
       # Mount background image (to have custom background)
       #- ./data/bg.jpg:/app/dist/views/assets/img/bg.jpg
       # Map custom functions for js expressions and jq
-      - ./data/functions/custom.js:/app/dist/src/functions/custom.js
-      - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
+      # - ./data/functions/custom.js:/app/dist/src/functions/custom.js
+      # - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
       # Map custom sshkey to local node .ssh location
       - ./data/ssh:$HOME_DIR/.ssh
       - ./data/git/.gitconfig:$HOME_DIR/.gitconfig
