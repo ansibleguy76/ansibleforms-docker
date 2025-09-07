@@ -15,3 +15,9 @@ Simply follow the instructions on (https://ansibleforms.com)
 * a backup bash script
 * sample custom functions to extend Ansible Forms.
 
+# K8S
+Searching for K8S install, find the helm install here.  
+(https://github.com/ansibleguy76/ansibleforms-helm)
+  
+
+

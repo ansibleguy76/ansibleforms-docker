@@ -20,14 +20,12 @@ services:
       - ./data/mysql/db:/var/lib/mysql
       # Map my.cnf file (to maintain persistency)
       - ./data/mysql/my.cnf:/etc/mysql/my.cnf
-      # Map init sql scripts
-      - ./data/mysql/init:/docker-entrypoint-initdb.d
   # AnsibleForms application
   app:
     # Only start after MySql
     depends_on:
       - mysqldb
-    image: ansibleguy/ansibleforms:latest
+    image: ansibleguy/ansibleforms:betav6
     container_name: af_app
     restart: unless-stopped
     ports:
@@ -51,21 +49,10 @@ services:
     tty: true
     volumes:
       # Mount application folder to host folder (to maintain persistency)
-      - ./data:/app/dist/persistent
-      # Mount images folder to host folder (to have custom images)
-      - ./data/images:/app/dist/views/assets/images    
-      # Mount logo (to have custom logo)
-      #- ./data/images/mylogo.svg:/app/dist/views/assets/img/logo_ansible_forms_full_white.svg
-      # Mount background image (to have custom background)
-      #- ./data/bg.jpg:/app/dist/views/assets/img/bg.jpg
-      # Map custom functions for js expressions and jq
-      # - ./data/functions/custom.js:/app/dist/src/functions/custom.js
-      # - ./data/functions/jq.custom.definitions.js:/app/dist/src/functions/jq.custom.definitions.js
-      # Map custom sshkey to local node .ssh location
-      - ./data/ssh:$HOME_DIR/.ssh
-      - ./data/git/.gitconfig:$HOME_DIR/.gitconfig
-      # Map custom ansible.cfg
-      - ./data/ansible/ansible.cfg:/etc/ansible/ansible.cfg
-      - ./data/ansible/roles:/etc/ansible/roles
-      - ./data/ansible/collections:/etc/ansible/collections
+      - ./data:/app/dist/persistent                         # persistent app data
+      - ./data/ssh:$HOME_DIR/.ssh                           # persistent ssh keys
+      - ./data/git/.gitconfig:$HOME_DIR/.gitconfig          # custom git config
+      - ./data/ansible/ansible.cfg:/etc/ansible/ansible.cfg # custom ansible.cfg
+      - ./data/ansible/roles:/etc/ansible/roles             # custom ansible roles
+      - ./data/ansible/collections:/etc/ansible/collections # custom ansible collections
 
