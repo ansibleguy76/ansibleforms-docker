@@ -1,4 +1,8 @@
 # Intro
+
+> **Note:**  
+> This is for v5 only.  Use the v6 docker compose for v6.
+
 This project is a simple docker-compose to quickly get you started with AnsibleForms.
 The docker compose will spin up the mysql database and grab the latest AnsibleForms image from docker hub.
 It will install everything with defaults and present a dummy playbook as well as a demo forms.yaml file.
