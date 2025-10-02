@@ -11,7 +11,6 @@ services:
     # Set manual environment variables
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_PASSWORD
-      - MYSQL_DATABASE=AnsibleForms
     ports:
       # Mount host port to docker internal port
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
@@ -25,7 +24,7 @@ services:
     # Only start after MySql
     depends_on:
       - mysqldb
-    image: ansibleguy/ansibleforms:betav6
+    image: ansibleguy/ansibleforms:5.0.10
     container_name: af_app
     restart: unless-stopped
     ports:
